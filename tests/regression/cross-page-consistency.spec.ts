@@ -32,7 +32,12 @@ test.describe('Navigation Consistency @regression', () => {
         return;
       }
 
-      const nav = page.locator('nav, [role="navigation"], header');
+      // cadint.com has no <nav> or <header> — navigation is a plain <ul>
+      // containing <li><a title="..."> items linking to the known pages.
+      const nav = page.locator(
+        'nav, [role="navigation"], header, ' +
+        'ul:has(a[href*="About-Us"]), ul:has(a[href*="Features"]), ul:has(a[href*="Order"])'
+      );
       const navCount = await nav.count();
       expect(
         navCount,
