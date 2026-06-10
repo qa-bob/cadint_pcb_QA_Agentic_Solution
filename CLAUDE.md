@@ -1,6 +1,13 @@
 # QA Agentic Solution — Claude Code Instructions
 
+See @README.md for full project overview and contributor guide.
+
 This repository is a **Playwright + TypeScript regression test suite** for the website defined in `site.config.json`. It follows a **Page Object Model (POM)** architecture and is structured for agentic execution by Claude Code.
+
+Path-scoped rules auto-load from `.claude/rules/`:
+- `playwright-conventions.md` — applies to `tests/**`
+- `pom-architecture.md` — applies to `src/pages/**`
+- `typescript-standards.md` — applies to `src/**` and `tests/**`
 
 ---
 
@@ -49,6 +56,7 @@ Build and maintain a comprehensive GUI, functional, and regression test suite fo
 ### TypeScript
 - Strict mode is enabled (`tsconfig.json`)
 - All page object properties must be typed
+- Path alias for `src/types/` is `@sitetypes/` — do NOT use `@types/` (reserved by TypeScript)
 - Run `npx tsc --noEmit` to check for errors before finishing
 
 ---
@@ -60,7 +68,9 @@ npm test                    # Run all tests
 npm run test:smoke          # @smoke tests only
 npm run test:navigation     # @navigation tests only
 npm run test:forms          # @forms tests only
+npm run test:functional     # @functional tests only
 npm run test:visual         # @visual tests only
+npm run test:regression     # @regression tests only
 npm run test:responsive     # @responsive tests only
 npm run baseline            # Update visual snapshots
 npm run lint                # ESLint
@@ -99,8 +109,9 @@ npm run typecheck           # TypeScript check
 | `@smoke` | Site loads, title present, no console errors |
 | `@navigation` | Nav links, routing, menus, breadcrumbs |
 | `@forms` | Form fields, validation, accessibility |
-| `@functional` | Business features: pricing, search, video, accordion |
+| `@functional` | Business features: PCB features, download CTAs, product sections |
 | `@visual` | Screenshot regression with `toHaveScreenshot()` |
+| `@regression` | Cross-page consistency: nav, footer, branding, broken links |
 | `@responsive` | Viewport-specific layout checks |
 
 ---

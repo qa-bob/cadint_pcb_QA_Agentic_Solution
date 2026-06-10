@@ -24,7 +24,7 @@ test.describe('Navigation @navigation', () => {
 
   // ── Link reachability ───────────────────────────────────────────────────────
 
-  test('all nav links are reachable (no 404s) @navigation', async ({ navigationPage, siteConfig }) => {
+  test('all nav links are reachable (no 404s) @navigation', async ({ navigationPage }) => {
     const results = await navigationPage.checkAllNavLinksReachable();
 
     if (results.length === 0) {

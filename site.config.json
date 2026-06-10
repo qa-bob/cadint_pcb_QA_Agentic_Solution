@@ -1,23 +1,27 @@
-﻿{
+{
     "name":  "CADint PCB",
     "url":  "http://www.cadint.com",
-    "description":  "",
-    "industry":  "",
+    "description":  "Professional PCB design software with schematic capture, multi-layer PCB layout, 3D viewer, and import/export capabilities for engineering professionals.",
+    "industry":  "CAD / PCB Design Software",
     "hasContactForm":  true,
     "expectedNavItems":  [
-
-                         ],
+        "Home",
+        "Products",
+        "Features",
+        "Download",
+        "Contact"
+    ],
     "viewports":  [
-                      "desktop",
-                      "mobile",
-                      "tablet"
-                  ],
+        "desktop",
+        "mobile",
+        "tablet"
+    ],
     "skipVisual":  false,
     "skipForms":  false,
     "auth":  {
-                 "required":  false,
-                 "loginUrl":  "",
-                 "username":  "",
-                 "password":  ""
-             }
+        "required":  false,
+        "loginUrl":  "",
+        "username":  "",
+        "password":  ""
+    }
 }

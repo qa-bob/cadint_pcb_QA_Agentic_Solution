@@ -10,10 +10,12 @@
  */
 
 import { test as base, expect } from '@playwright/test';
-import { loadSiteConfig, type SiteConfig } from '@types/site-config.types';
+import { loadSiteConfig, type SiteConfig } from '@sitetypes/site-config.types';
 import { HomePage } from '@pages/home.page';
 import { NavigationPage } from '@pages/navigation.page';
 import { ContactFormPage } from '@pages/contact.page';
+import { ProductsPage } from '@pages/products.page';
+import { DownloadsPage } from '@pages/downloads.page';
 
 // ── Fixture type definitions ─────────────────────────────────────────────────
 
@@ -26,6 +28,10 @@ export interface Fixtures {
   navigationPage: NavigationPage;
   /** ContactFormPage page object (does not auto-navigate) */
   contactPage: ContactFormPage;
+  /** ProductsPage page object (does not auto-navigate) */
+  productsPage: ProductsPage;
+  /** DownloadsPage page object (does not auto-navigate) */
+  downloadsPage: DownloadsPage;
 }
 
 // ── Extended test object ─────────────────────────────────────────────────────
@@ -35,6 +41,7 @@ export const test = base.extend<Fixtures>({
    * siteConfig — loaded once per worker from site.config.json.
    * Shared across all fixtures in the same test.
    */
+  // eslint-disable-next-line no-empty-pattern
   siteConfig: async ({}, use) => {
     const config = loadSiteConfig();
     await use(config);
@@ -66,6 +73,24 @@ export const test = base.extend<Fixtures>({
   contactPage: async ({ page, siteConfig }, use) => {
     const contactPage = new ContactFormPage(page, siteConfig);
     await use(contactPage);
+  },
+
+  /**
+   * productsPage — constructs ProductsPage without navigating.
+   * Tests should navigate to the appropriate page first.
+   */
+  productsPage: async ({ page, siteConfig }, use) => {
+    const productsPage = new ProductsPage(page, siteConfig);
+    await use(productsPage);
+  },
+
+  /**
+   * downloadsPage — constructs DownloadsPage without navigating.
+   * Tests should navigate to the downloads/trial page first.
+   */
+  downloadsPage: async ({ page, siteConfig }, use) => {
+    const downloadsPage = new DownloadsPage(page, siteConfig);
+    await use(downloadsPage);
   },
 });
 
