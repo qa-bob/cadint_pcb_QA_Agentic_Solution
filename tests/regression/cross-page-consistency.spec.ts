@@ -10,12 +10,14 @@
 
 import { test, expect } from '@fixtures/site.fixture';
 
-// Pages to check for consistent structure.
-// Add page paths here as more are discovered via /analyze-site.
+// Pages confirmed present via /analyze-site on 2026-06-10.
 const PAGES_TO_CHECK = [
   { path: '/', label: 'Homepage' },
-  { path: '/download', label: 'Download' },
-  { path: '/contact', label: 'Contact' },
+  { path: '/About-Us', label: 'About Us' },
+  { path: '/Features', label: 'Features' },
+  { path: '/Download', label: 'Download' },
+  { path: '/Order', label: 'Order' },
+  { path: '/Support', label: 'Support' },
 ];
 
 test.describe('Navigation Consistency @regression', () => {

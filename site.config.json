@@ -1,27 +1,57 @@
 {
-    "name":  "CADint PCB",
-    "url":  "http://www.cadint.com",
-    "description":  "Professional PCB design software with schematic capture, multi-layer PCB layout, 3D viewer, and import/export capabilities for engineering professionals.",
-    "industry":  "CAD / PCB Design Software",
-    "hasContactForm":  true,
-    "expectedNavItems":  [
+    "name": "CADint",
+    "url": "http://www.cadint.com",
+    "description": "A leading worldwide supplier of CAD/CAE PCB design software based in Elk Grove, CA. Over 25,000 users worldwide. Offers schematic capture, multi-layer PCB layout, 3D visualization, and Gerber/drill output.",
+    "industry": "PCB Design / CAD Software",
+    "hasContactForm": true,
+    "expectedNavItems": [
         "Home",
-        "Products",
+        "About Us",
+        "News",
         "Features",
         "Download",
-        "Contact"
+        "Order",
+        "Support"
     ],
-    "viewports":  [
+    "viewports": [
         "desktop",
         "mobile",
         "tablet"
     ],
-    "skipVisual":  false,
-    "skipForms":  false,
-    "auth":  {
-        "required":  false,
-        "loginUrl":  "",
-        "username":  "",
-        "password":  ""
+    "skipVisual": false,
+    "skipForms": false,
+    "auth": {
+        "required": false,
+        "loginUrl": "",
+        "username": "",
+        "password": ""
+    },
+    "_notes": {
+        "server": "Hosted at 03402f8.netsolhost.com — www.cadint.com redirects here",
+        "https": "HTTPS not available — site serves HTTP only (connection refused on port 443)",
+        "metaDescription": "No meta description present on any page — SEO issue",
+        "metaViewport": "Meta viewport tag not detected — responsiveness unconfirmed",
+        "headingStructure": "Site uses H4/H5 instead of H1/H2 — accessibility issue",
+        "contactPage": "/Support has a contact form: First Name, Last Name, Company, Address, City, State, Zip, Country, Email, Phone, message",
+        "downloadForm": "/Download has a demo request form with the same fields (minus message)",
+        "extraPages": [
+            "/12-Reasons",
+            "/support-forum/",
+            "/About-Us",
+            "/News",
+            "/Order"
+        ],
+        "featurePDFs": [
+            "/pcb1.pdf",
+            "/pcb2.pdf",
+            "/pcb3.pdf",
+            "/pcb4.pdf",
+            "/pcb5.pdf"
+        ],
+        "contact": {
+            "sales": "sales@cadint.com | 800.553.1177",
+            "support": "support@cadint.com | 209.606.0660",
+            "location": "Elk Grove, CA"
+        }
     }
 }

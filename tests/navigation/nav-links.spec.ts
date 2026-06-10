@@ -50,6 +50,30 @@ test.describe('Navigation @navigation', () => {
     ).toHaveLength(0);
   });
 
+  // ── Expected nav items ──────────────────────────────────────────────────────
+
+  test('all expectedNavItems from site.config.json are present @navigation', async ({
+    navigationPage,
+    siteConfig,
+  }) => {
+    if (!siteConfig.expectedNavItems || siteConfig.expectedNavItems.length === 0) {
+      console.warn('[navigation] No expectedNavItems configured — skipping check.');
+      return;
+    }
+
+    const navLinks = await navigationPage.getNavLinks();
+    const navTexts = navLinks.map((l) => l.text.toLowerCase());
+
+    const missing = siteConfig.expectedNavItems.filter(
+      (item) => !navTexts.some((t) => t.includes(item.toLowerCase()))
+    );
+
+    expect(
+      missing,
+      `Expected nav items not found in navigation: ${missing.join(', ')}`
+    ).toHaveLength(0);
+  });
+
   // ── Mobile nav ──────────────────────────────────────────────────────────────
 
   test('mobile nav menu toggles correctly @navigation', async ({ navigationPage, page }) => {
