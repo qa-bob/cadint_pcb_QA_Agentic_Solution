@@ -7,7 +7,8 @@ export interface FeatureSection {
 }
 
 export class ProductsPage extends BasePage {
-  readonly mainHeading: Locator = this.page.locator('h1, h2').first();
+  // cadint.com uses H4 as its primary heading level (non-standard but confirmed)
+  readonly mainHeading: Locator = this.page.locator('h1, h2, h3, h4').first();
 
   // Feature sections for CADint PCB's core capabilities
   readonly schematicSection: Locator = this.page.locator(
@@ -58,7 +59,8 @@ export class ProductsPage extends BasePage {
   }
 
   async discoverFeatureSections(): Promise<FeatureSection[]> {
-    const headings = this.page.locator('h2, h3');
+    // cadint.com uses H4 as its primary content heading level
+    const headings = this.page.locator('h2, h3, h4');
     const count = await headings.count();
     const sections: FeatureSection[] = [];
 
