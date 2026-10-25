@@ -27,10 +27,7 @@ test.describe('Navigation Consistency @regression', () => {
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
 
       // Skip pages that return 404 — they may not exist on this site
-      if (!response || response.status() >= 400) {
-        console.warn(`[regression] ${label} (${path}) returned ${response?.status()} — skipping nav check`);
-        return;
-      }
+      test.skip(!response || response.status() >= 400, `${label} (${path}) returned ${response?.status()}`);
 
       // cadint.com has no <nav> or <header> — navigation is a plain <ul>
       // containing <li><a title="..."> items linking to the known pages.
@@ -56,10 +53,7 @@ test.describe('Footer Consistency @regression', () => {
       const url = siteConfig.url.replace(/\/$/, '') + path;
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
 
-      if (!response || response.status() >= 400) {
-        console.warn(`[regression] ${label} (${path}) returned ${response?.status()} — skipping footer check`);
-        return;
-      }
+      test.skip(!response || response.status() >= 400, `${label} (${path}) returned ${response?.status()}`);
 
       const footer = page.locator('footer, [role="contentinfo"]');
       const footerCount = await footer.count();
@@ -79,10 +73,7 @@ test.describe('Branding Consistency @regression', () => {
       const url = siteConfig.url.replace(/\/$/, '') + path;
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
 
-      if (!response || response.status() >= 400) {
-        console.warn(`[regression] ${label} returned ${response?.status()} — skipping brand check`);
-        return;
-      }
+      test.skip(!response || response.status() >= 400, `${label} returned ${response?.status()}`);
 
       const bodyText = await page.evaluate<string>(() => document.body.innerText.toLowerCase());
       const hasBranding =
@@ -103,10 +94,7 @@ test.describe('Page Title Consistency @regression', () => {
       const url = siteConfig.url.replace(/\/$/, '') + path;
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
 
-      if (!response || response.status() >= 400) {
-        console.warn(`[regression] ${label} returned ${response?.status()} — skipping title check`);
-        return;
-      }
+      test.skip(!response || response.status() >= 400, `${label} returned ${response?.status()}`);
 
       const title = await page.title();
       expect(title.trim(), `${label} must have a non-empty <title>`).toBeTruthy();
