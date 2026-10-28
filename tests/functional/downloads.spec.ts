@@ -85,10 +85,7 @@ test.describe('Download / Trial Section @functional', () => {
 
     const count = await downloadLinks.count();
 
-    if (count === 0) {
-      console.warn('[functional] No file download links detected on homepage');
-      return;
-    }
+    test.skip(count === 0, 'No file download links detected on homepage');
 
     for (let i = 0; i < count; i++) {
       const link = downloadLinks.nth(i);

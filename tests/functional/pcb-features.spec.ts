@@ -109,10 +109,7 @@ test.describe('PCB Features Page @functional', () => {
     const images = page.locator('img');
     const count = await images.count();
 
-    if (count === 0) {
-      console.warn('[functional] No images found on Features page');
-      return;
-    }
+    test.skip(count === 0, 'No images found on Features page');
 
     let missingAlt = 0;
     for (let i = 0; i < Math.min(count, 10); i++) {

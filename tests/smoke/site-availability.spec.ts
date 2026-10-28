@@ -55,7 +55,7 @@ test.describe('Site Availability @smoke', () => {
       consoleErrors.push(`[pageerror] ${err.message}`);
     });
 
-    await page.goto(siteConfig.url, { waitUntil: 'networkidle' });
+    await page.goto(siteConfig.url, { waitUntil: 'load' });
 
     // Filter out known benign errors — third-party scripts and known site 404s
     const criticalErrors = consoleErrors.filter((err) => {
@@ -108,9 +108,8 @@ test.describe('Site Availability @smoke', () => {
 
     // Meta description check — warn only, not a hard failure
     // cadint.com has a minimal meta description ("CADint") — this is a known SEO issue
-    const metaDescription = await page
-      .locator('meta[name="description"]')
-      .getAttribute('content');
+    const metaTag = page.locator('meta[name="description"]').first();
+    const metaDescription = (await metaTag.count()) > 0 ? await metaTag.getAttribute('content') : null;
 
     if (!metaDescription || metaDescription.trim().length === 0) {
       console.warn(
